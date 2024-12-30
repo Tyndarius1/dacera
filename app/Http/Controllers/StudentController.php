@@ -7,11 +7,13 @@ use App\Models\Student;
 use Illuminate\Support\Facades\Storage;
 
 
+
 class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         $students = Student::all();
@@ -117,7 +119,7 @@ class StudentController extends Controller
             'signature' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:1024',
             'qr' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:1024',
             'proimage' => 'nullable|image|max:2048',
-          
+
         ]);
 
         $student = Student::findOrFail($id);
@@ -132,9 +134,9 @@ class StudentController extends Controller
         $student->econtact = $request->econtact;
         $student->ename = $request->ename;
         $student->datebirth = $request->datebirth;
-      
 
-      
+
+
         if ($request->hasFile('signature')) {
             if ($student->signature && Storage::exists($student->signature)) {
                 Storage::delete($student->signature);
@@ -161,7 +163,7 @@ class StudentController extends Controller
 
         return redirect()->route('students.show', $student->id)->with('success', 'Student updated successfully');
     }
-    
+
 
     /**
      * Remove the specified resource from storage.
@@ -171,7 +173,7 @@ class StudentController extends Controller
         $student = Student::find($id);
         if (!$student) {
             return redirect()->route('students.index')->with('error', 'Student not found.');
-        }    
+        }
         $student->delete();
         return redirect()->route('students.index')->with('success', 'Student deleted successfully.');
     }

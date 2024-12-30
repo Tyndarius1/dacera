@@ -24,7 +24,7 @@
 
                 <li class="nav-item-dropdown">
                     <a href="#" class="nav-link" onclick="toggleDropdown(event)">
-                        <h5>Welcome,</h5> {{ Auth::user()->name }}
+                        <h5>Welcome,   <span>{{ Auth::user()->name }}</span></h5>
                     </a>
                     <div class="dropdown-menu">
                         <!-- Logout Form -->

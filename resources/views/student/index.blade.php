@@ -185,18 +185,18 @@
     }
 
     .search-con button {
-     
+
         border: none;
         background: none;
         cursor: pointer;
         background-color: #4d7bfb;
-        padding: 10px 20px; 
+        padding: 10px 20px;
         border-radius: 5px;
         color:white;
         font-size: 20px;
     }
 
-   
+
 
 </style>
 
@@ -250,13 +250,15 @@
         <h2 style="text-align: center;">Enter Student ID</h2>
 
         <!-- Search Bar for Student ID -->
-       
+
         <div class="search-con">
             <input type="text" id="searchStudentId" placeholder="Enter Student ID">
-          
+
             <button id="searchBtn">Submit</i></button>
         </div>
-      
+
+
+
         <p id="searchError" style="color: red; display: none;">Wa nakit an ang imong gipangita balik lang ugma</p>
 
         <form id="createForm" action="{{ route('students.store') }}" method="POST" enctype="multipart/form-data" style="display: none;">
@@ -364,7 +366,7 @@
         .then(data => {
             const student = data.data.find(s => s.student_identification_number[0]?.student_id === studentId);
             if (student) {
-             
+
                 firstnameInput.value = student.first_name || '';
                 middlenameInput.value = student.middle_name || '';
                 lastnameInput.value = student.last_name || '';
@@ -386,7 +388,7 @@
         .catch(error => {
             console.error('Error:', error);
             searchError.style.display = 'block';
-            createForm.style.display = 'none'; 
+            createForm.style.display = 'none';
         });
     });
 </script>
